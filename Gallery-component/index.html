@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery components</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const Gallery = ({ children }) => {
+            return (
+                <div className="gallery">
+                    {children}
+                </div>
+            )
+        };
+
+        const App = () => {
+            return (
+                <Gallery>
+                    <img src="https://images.unsplash.com/photo-1617105780702-2b505cd59bbb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="nature" />
+                    <img src="https://images.unsplash.com/photo-1617105780702-2b505cd59bbb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="nature" />  <img src="https://images.unsplash.com/photo-1617105780702-2b505cd59bbb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="nature" />
+                </Gallery>
+            )
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+
+    
+    </script>
+
+
+    <style>
+        .gallery {
+            display: flex;
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</body>
+
+</html>
