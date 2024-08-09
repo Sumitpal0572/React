@@ -5,6 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive image gallery</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar-menu {
+            display: flex;
+        }
+
+        .navbar-item {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-hamburger {
+            display: none;
+        }
+
+        .hamburger-icon {
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+            }
+
+            .navbar-hamburger {
+                display: block;
+            }
+        }
+
+        /* ImageCard styles */
+        .image-card {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 10px;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,16 +86,68 @@
                 <nav className="navbar">
                     <div className="navbar-container">
                         <div className="navbar-menu">
-                            <a href="#">Home</a>
-                            <a href="#">Gallery</a>
-                            <a href="#">About</a>
-                            <a href="#">Contact</a>
-
+                            <a href="#" className="navbar-item">Home</a>
+                            <a href="#" className="navbar-item">Gallery</a>
+                            <a href="#" className="navbar-item">About</a>
+                            <a href="#" className="navbar-item">Contact</a>
                         </div>
+                        <div className="navbar-hamburger">
+                            <span className="hamburger-icon">☰</span>
+                        </div>
+
                     </div>
                 </nav>
             )
         }
+
+
+        const ImageCard = ({ title, price }) => {
+            return (
+                <div className="image-card">
+                    <img
+                        src={`https://via.placeholder.com/300x200?text=${title}`}
+                        alt={title}
+                    />
+                    <div className="card-content">
+                        <h3>{title}</h3>
+                        <p>{price}</p>
+                    </div>
+                </div>
+            );
+        };
+
+
+        const Gallery = () => {
+            const images = [
+                { title: "Image 1", price: "10.00" },
+                { title: "Image 2", price: "20.00" },
+                { title: "Image 3", price: "30.00" },
+                { title: "Image 4", price: "40.00" },
+                { title: "Image 5", price: "50.00" },
+                { title: "Image 6", price: "60.00" },
+            ];
+
+            return (
+                <div className="gallery">
+                    {images.map((image, index) => (
+                        <ImageCard key={index} title={image.title} price={image.price} />
+                    ))}
+                </div>
+            );
+        };
+
+        const App = () => {
+            return (
+                <>
+                    <Navbar />
+                    <Gallery />
+                </>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+
 
     </script>
 
