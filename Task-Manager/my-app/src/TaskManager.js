@@ -11,7 +11,7 @@ const TaskManager = () => {
     });
     const [filterAssignee, setFilterAssignee] = useState("");
 
-    const baseURL = "http://localhost:5000/tasks";
+    const baseURL = "http://localhost:3000/tasks";
 
     //Fetch all tasks from server
     const getAllTasks = async () => {
