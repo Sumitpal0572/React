@@ -23,4 +23,30 @@ function FetchData() {
   );
 }
 
-export default FetchData;
+
+function ExternalEvent() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  return (
+    <div>
+      <h2>Mouse Position</h2>
+      <p>
+        X: {mousePosition.x}, Y: {mousePosition.y}
+      </p>
+    </div>
+  );
+}
+
+export { ExternalEvent, FetchData }
